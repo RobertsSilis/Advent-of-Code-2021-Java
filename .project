@@ -14,4 +14,16 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>InputDayOne.txt</name>
+			<type>1</type>
+			<location>D:/Programs/Github Repositories/Advent of code 2021/InputDayOne.txt</location>
+		</link>
+		<link>
+			<name>InputDayTwo.txt</name>
+			<type>1</type>
+			<location>D:/Programs/Github Repositories/Advent of code 2021/InputDayTwo.txt</location>
+		</link>
+	</linkedResources>
 </projectDescription>

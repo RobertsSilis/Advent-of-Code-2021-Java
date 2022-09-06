@@ -10,15 +10,15 @@ public class DayOne
 	{
 		try 
 		{
-			File numbers = new File("src\\Input.txt");  
-			Scanner myReader = new Scanner(numbers);
+			File depth = new File("InputDayOne.txt");  
+			Scanner myReader = new Scanner(depth);
 			ArrayList<Integer> input = new ArrayList<Integer>();  //Arraylist used as an array of unknown length.
 			while(myReader.hasNextLine())
 			{
-				input.add(Integer.parseInt(myReader.nextLine()));  //Writes the input file into variable "input".
+				input.add(Integer.parseInt(myReader.nextLine()));  //Writes the input file into arraylist "input".
 			}
-			System.out.println(DayOne.taskOne(input)); //Prints out the solution to day 1 task 1 problem.
-			System.out.println(DayOne.taskTwo(input)); //Prints out the solution to day 1 task 2 problem.
+			System.out.println(taskOne(input)); //Prints out the solution to day 1 task 1 problem.
+			System.out.println(taskTwo(input)); //Prints out the solution to day 1 task 2 problem.
 			myReader.close();
 			input.clear();
 		} 
