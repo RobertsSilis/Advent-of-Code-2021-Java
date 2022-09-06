@@ -12,10 +12,10 @@ public class DayOne
 		{
 			File numbers = new File("src\\Input.txt");  
 			Scanner myReader = new Scanner(numbers);
-			ArrayList<Integer> input = new ArrayList<Integer>();  
+			ArrayList<Integer> input = new ArrayList<Integer>();  //Arraylist used as an array of unknown length.
 			while(myReader.hasNextLine())
 			{
-				input.add(Integer.parseInt(myReader.nextLine()));  //Writes the input file into variable "input"
+				input.add(Integer.parseInt(myReader.nextLine()));  //Writes the input file into variable "input".
 			}
 			System.out.println(DayOne.taskOne(input)); //Prints out the solution to day 1 task 1 problem.
 			System.out.println(DayOne.taskTwo(input)); //Prints out the solution to day 1 task 2 problem.
