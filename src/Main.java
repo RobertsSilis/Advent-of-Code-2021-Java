@@ -21,5 +21,6 @@ public class Main
 	{
 		DayOne.dayOne();
 		DayTwo.dayTwo();
+		DayThree.dayThree();
 	}
 }
