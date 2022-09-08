@@ -34,7 +34,7 @@ public class DayThree
 	static void dayThree()
 	{
 		System.out.println(taskOne());
-		taskTwo();
+		System.out.println(taskTwo());
 	}			
 	
 /*
@@ -150,8 +150,106 @@ Use the binary numbers in your diagnostic report to calculate the oxygen generat
 	
 */
 	
-	static void taskTwo()
+	static int taskTwo()
 	{
-		
+		ArrayList<String> o2Results = new ArrayList<String>();
+		try
+		{
+			
+			File directions = new File("InputDayThree.txt"); 
+			Scanner myReader = new Scanner(directions);
+			while(myReader.hasNextLine())
+			{
+				o2Results.add(myReader.nextLine()); //Creates an arraylist with all input values
+			}
+			myReader.close();	
+		}
+		catch (FileNotFoundException e) 
+		{
+		     System.out.println("An error occurred.");
+		     e.printStackTrace();
+		}
+		ArrayList<String> co2Results = new ArrayList<String>(o2Results); //Copies the first arraylist as both are using the same input
+		for(int j = 0; o2Results.size() > 1; j++) //First loop to determine the correct answer for oxygen generator rating
+		{
+			int onesZeros = 0;
+			for(int i = 0; i < o2Results.size(); i++) //determines which is the most frequent bite in position j
+			{
+				String line = o2Results.get(i);
+				if(line.charAt(j) == '1')
+				{
+					onesZeros++;
+				}
+				else
+				{
+					onesZeros--;
+				}
+			}
+			char keep;
+			if(onesZeros >= 0) //defines that the most frequent bite should be kept
+			{
+				keep = '1';
+			}
+			else
+			{
+				keep = '0';
+			}
+			for(int i = 0; i < o2Results.size(); i++) //deletes all elements, that have the wrong bite
+			{
+				String line = o2Results.get(i);
+				if(line.charAt(j) != keep)
+				{
+					o2Results.remove(i);
+					i--;
+				}
+			}
+		}
+
+		for(int j = 0; co2Results.size() > 1; j++) //second loop to determine the answer for CO2 scrubber rating
+		{
+			int onesZeros = 0;
+			for(int i = 0; i < co2Results.size(); i++) //determines which is the most frequent bite in position j
+			{
+				String line = co2Results.get(i);
+				if(line.charAt(j) == '1')
+				{
+					onesZeros++;
+				}
+				else
+				{
+					onesZeros--;
+				}
+			}
+			char keep;
+			if(onesZeros < 0)  //defines that the most frequent bite should NOT be kept
+			{
+				keep = '1';
+			}
+			else
+			{
+				keep = '0';
+			}
+			for(int i = 0; i < co2Results.size(); i++) //deletes all elements, that have the wrong bite
+			{
+				String line = co2Results.get(i);
+				if(line.charAt(j) != keep)
+				{
+					co2Results.remove(i);
+					i--;
+				}
+			}
+		}
+		String oxygen, co2;
+		int oxyInt = 0, co2Int = 0;
+		oxygen = o2Results.get(0);
+		co2 = co2Results.get(0);
+		o2Results.clear();
+		co2Results.clear();
+		for(int i = 0, j = oxygen.length() -1; i < oxygen.length(); i++, j--) //converts a string in binary to an int
+		{
+			oxyInt = oxyInt + (int)Math.pow(2, j) * Character.getNumericValue(oxygen.charAt(i));
+			co2Int = co2Int + (int)Math.pow(2, j) * Character.getNumericValue(co2.charAt(i));
+		}
+		return oxyInt * co2Int;
 	}
 }
